@@ -1,0 +1,71 @@
+<h3 class=" text-info text-center">Currency Converter</h3>
+<div >
+	<form>
+		<div class=" form-row">
+			<div class="form-group col-md-4">
+				<fieldset>
+					<label class="text-muted">Currency Name:-</label>
+					<input name="value"type="text"  class="form-control" name="Cname"[(ngModel)]="Cname">
+				</fieldset>
+			</div>
+	
+			<div class="form-group col-md-4">
+				<fieldset>
+					<label for="" class="text-muted">Currency Symbol:-</label>
+					<input name="value"type="text" class=" form-control" name="Csymbol" [(ngModel)]="Csymbol">
+				</fieldset>
+			</div>
+	
+			<div class="form-group col-md-4">
+				<fieldset>
+					<label for="" class="text-muted">Conversion Rate:-</label>
+					<input name="value" type="text" class=" form-control " name="Ccrate" [(ngModel)]="Ccrate">
+				</fieldset>
+				
+			</div>
+		</div>
+		<div class="text-center">
+			<button class="btn btn-success mr-1" (click)="addCurrency(Cname,Csymbol,Ccrate)">Add</button>
+			<button class="btn btn-danger mr-1" type="reset">Clear</button>
+		</div>
+	</form>
+</div>
+
+<div class="row mt-2">
+	<div class="col-md-8">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Symbol</th>
+					<th scope="col">Rate</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let x of currency">
+					<td>{{x.name}}</td>
+					<td>{{x.symbol}}</td>
+					<td>{{x.value}}</td>
+					<td><button class="btn btn-outline-danger" (click)="remCurrency(x.name)">Remove</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="col-md-4">
+		<form action="">
+			<input class="form-control" type="number" name="amount" [(ngModel)]="amount" placeholder="Enter amount">
+			<select class="form-control" name="convertCurrency" id="" [(ngModel)]="convertCurrency">
+				<option value="">Select Currency</option>
+				<option *ngFor="let cur of currency" value="{{cur.name}}">{{cur.name}}</option>
+			</select>
+			<button class="btn btn-success btn-sm"
+			 (click)="calculateCurrency(amount,convertCurrency)">Convert To Rupees
+			</button>
+			<h5 class="p-3 mb-2 bg-light text-dark" *ngIf="convertedamt"> 
+				The value of {{ amount | currency: cursymbol}} is {{convertedamt | currency: 'INR'}}
+			</h5>
+		</form>
+	
+	</div>
+</div>

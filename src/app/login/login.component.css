@@ -1,0 +1,13 @@
+#loginform{
+background-color: rgba(0,0,0,0.11);
+text-align: center;
+min-height: 250px
+}
+
+#loginform  form{
+	padding: 0px 20px;
+}
+
+#loginform form fieldset{
+	margin: 5px
+}

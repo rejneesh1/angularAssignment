@@ -1,0 +1,39 @@
+*{
+	padding: 0;
+	margin:0;
+}
+nav{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-head h1{
+	font-size: 4em
+}
+
+.nav-head h1::first-letter{
+	color: blue;
+}
+
+.nav-item{
+	width: 64%;
+	font-weight: bold;
+}
+
+.nav-item ul{
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+}
+.nav-item li{
+	border: 2px inset green;
+	padding: 2%;
+	min-width: 17%;
+	text-align:center;
+}
+.nav-item a{
+	text-decoration: none;
+	color: black;
+}
+

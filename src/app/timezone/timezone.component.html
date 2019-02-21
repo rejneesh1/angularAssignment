@@ -1,0 +1,46 @@
+<div class="container" style="margin: 100px auto">
+	<h3 class="text-center">Time-Zone <span>{{ currentTime }}</span></h3>
+	<form action="">
+		<div class="form-group">
+			<label for="">COUNTRY NAME:</label>
+			<input type="text" class="form-control" placeholder=" Enter Country Name" [(ngModel)]="country" name="country">
+		</div>
+		<div class="form-group">
+			<label for="">OFF-SET TIME</label>
+			<input type="text" class="form-control" placeholder=" eg: +0530" [(ngModel)]="offset" name="offset">
+		</div>
+		<button class="btn btn-sm btn-success  col-sm-2" (click)="createTimezone(country,offset)">Submit Time-Zone</button>
+		<button class="btn btn-sm btn-secondary col-sm-2"type="reset">Clear</button>
+	</form>
+
+	<div class="row">
+		<table class="table table-lg table-responsive col-md-6">
+			<thead>
+				<tr>
+					<th>Time_Zone</th>
+					<th>UTC-Off-Set</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let country of timezone">
+					<td>{{country.cname}}</td>
+					<td>{{country.tzone}}</td>
+					
+				</tr>
+			</tbody>
+		</table>
+
+		<form action="" class="col-md-6">
+			<h5>Get Current Time</h5>
+			<div class="form-group">
+				<select name="changetime" id="" class="form-control" [(ngModel)]="changetime">
+					<option *ngFor="let country of timezone" value="{{country.tzone}}">{{country.cname}}</option>
+				</select>
+				<button class="btn btn-lg btn-warning col-sm-5" (click)="calculateTime(changetime)">Show Time</button>
+				<button *ngIf="changedHour" class="btn btn-lg btn-info col-sm-7">{{ changedHour}}:{{changedMin}}</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<h1>{{day}}</h1>
